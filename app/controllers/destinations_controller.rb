@@ -24,10 +24,7 @@ class DestinationsController < ApplicationController
     @destination.destroy
   end
 
-  private
-  def json_response(object, status = :ok)
-    render json: object, status: status
-  end
+private
 
   def destination_params
     params.permit(:country, :city, :description)
