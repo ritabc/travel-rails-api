@@ -2,15 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :destinations do
-    resources :reviews
-  end
+  resources :destinations 
 
   resources :activities
 
-  resources :users do
-    resources :reviews
-  end
+  resources :reviews
+
 
   resources :excursions ## require activity(s) and destination
 end
