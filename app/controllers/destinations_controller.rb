@@ -11,12 +11,16 @@ class DestinationsController < ApplicationController
 
   def create
     @destination = Destination.create!(destination_params)
-    json_response(@destination)
+    json_response(@destination, :created)
   end
 
   def update
     @destination = Destination.find(params[:id])
-    @destination.update(destination_params)
+    if @destination.update(destination_params)
+      render status: 200, json: {
+        message: "Your destination has been updated successfully."
+      }
+    end
   end
 
   def destroy
